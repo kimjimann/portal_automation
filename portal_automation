@@ -1,0 +1,114 @@
+import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
+import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
+import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
+import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+import static com.kms.katalon.core.testobject.ObjectRepository.findWindowsObject
+import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
+import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
+import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
+import com.kms.katalon.core.model.FailureHandling as FailureHandling
+import com.kms.katalon.core.testcase.TestCase as TestCase
+import com.kms.katalon.core.testdata.TestData as TestData
+import com.kms.katalon.core.testng.keyword.TestNGBuiltinKeywords as TestNGKW
+import com.kms.katalon.core.testobject.TestObject as TestObject
+import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
+import internal.GlobalVariable as GlobalVariable
+import org.openqa.selenium.Keys as Keys
+
+WebUI.openBrowser('')
+
+WebUI.navigateToUrl('로그인 사이트')
+
+WebUI.setText(findTestObject('id textbox'), 'ID 입력)
+
+WebUI.setEncryptedText(findTestObject('pw textbox'), 'PW 입력')
+
+WebUI.click(findTestObject('로그인 버튼'))
+
+'"(관리자) 신청자 이력" 버튼 클릭'
+WebUI.click(findTestObject('(관리자) 신청자 이력'))
+
+'관리자 자산 등록 클릭'
+WebUI.click(findTestObject('관리자 자산 등록 클릭'))
+
+'(공용 및 특수)애플리케이션(정보보호시스템) 계정'
+WebUI.click(findTestObject('(공용 및 특수)애플리케이션(정보보호시스템) 계정'))
+
+'신청자(이메일) 배열 생성'
+String[] stringArray = []
+
+'신청일(날짜) = 결재자 승인일자 배열 생성'
+String[] stringArray2 = []
+
+'계정 ID 배열 생성'
+String[] stringArray3 = []
+
+'사용목적 배열 생성'
+String[] stringArray4 = []
+
+'서비스  URL(숫자) 변수 생성'
+String[] stringArray5 = []
+
+'공용계정여부 배열 생성'
+String[] stringArray6 = []
+
+'특수계정 및 권한 여부 배열 생성'
+String[] stringArray7 = []
+
+'개인정보 접근 여부 배열 생성'
+String[] stringArray8 = []
+
+'인덱스 변수 선언'
+int index = 0
+
+'입력 반복문'
+for (String str : stringArray) {
+		
+'"신청자" 입력'
+WebUI.setText(findTestObject('신청자'), stringArray[index])
+
+'"신청일" 입력'
+WebUI.setText(findTestObject('신청일'), stringArray2[index])
+
+'"결재자 승인일자" 입력'
+WebUI.setText(findTestObject('결재자 승인일자'), stringArray2[index])
+
+'"서비스 URL" 입력'
+WebUI.setText(findTestObject('서비스 URL'), stringArray5[index])
+
+'"계정ID" 입력'
+WebUI.setText(findTestObject('계정ID'), stringArray3[index])
+
+
+if(stringArray6[index] == 'O')
+{
+'공용계정 여부 라디오 버튼 "예" 클릭'
+WebUI.click(findTestObject('공용계정 여부 라디오 버튼'))
+}
+
+
+if(stringArray7[index] == 'O')
+{
+'특수권한 여부 라디오 버튼 "예" 클릭'
+WebUI.click(findTestObject(''특수권한 여부 라디오 버튼'))
+}
+
+
+if(stringArray8[index] == 'O')
+{
+'개인정보 접근 여부 라디오버튼 "예" 클릭'
+WebUI.click(findTestObject('개인정보 접근 여부 라디오버튼'))
+}
+
+'사용목적 입력'
+WebUI.setText(findTestObject('사용목적'), stringArray4[index])
+
+'저장 후 계속 작성 클릭'
+WebUI.click(findTestObject('저장 후 계속 작성'))
+
+'인덱스 증가'
+index++
+
+}
