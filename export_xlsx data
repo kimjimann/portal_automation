@@ -1,0 +1,48 @@
+from openpyxl import load_workbook
+
+# 엑셀 파일 경로
+file_path = ""
+
+# 엑셀 파일 불러오기
+workbook = load_workbook(filename=file_path)
+sheet = workbook.worksheets[]  # 시트 선택하기
+
+# 시트 출력
+print(sheet)
+
+# 이메일, 신청일, ID, 사용목적 정보,자산코드(서비스 URL)를 저장할 배열
+email_list = []
+application_date_list = []
+id_list = []
+purpose_list = []
+asset_list = []
+
+
+# 데이터 읽기
+for row in sheet.iter_rows(values_only=True):
+    # 각 열의 데이터를 각 배열에 추가
+    email = row[]
+    application_date = row[]
+    id = row[]
+    purpose = row[]
+    asset = row[]
+
+    if email is not None:
+        email_list.append(email)
+    if application_date is not None:
+        application_date_list.append(application_date)
+    if id is not None:
+        id_list.append(id)
+    if purpose is not None:
+        purpose_list.append(purpose)
+    if asset is not None:
+        asset_list.append(asset)
+
+
+
+# 배열 출력 (테스트용)
+print("이메일:", email_list)
+print("신청일:", application_date_list)
+print("ID:", id_list)
+print("사용목적:", purpose_list)
+print("자산코드:", asset_list)
