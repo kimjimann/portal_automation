@@ -1,4 +1,4 @@
-# portal_automation
+# portal_ID_auto
 
 계정관리 대장 UI 자동 입력
 
